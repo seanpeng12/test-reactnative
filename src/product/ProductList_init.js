@@ -8,7 +8,7 @@ const data =[
     {name:"商品二", price:10000},
 ]
 
-// 一筆資料的定義
+// 處理資料
 const renderItem = ({ item, index }) => (
 
     <TouchableOpacity onPress = {()=>Alert.alert("您點選了:"+item.name)} style={styles.item}>

@@ -8,11 +8,12 @@ import ProductList from './src/product/ProductList'
 
 export default function App() {
   // 使用state
-  const [num, setNum] = useState(10);
+  // const [num, setNum] = useState(10);
+
   // props單獨傳值給clickjs是無法用useEffect監控(並非共用變數不會更新)，需要傳送function props
-  function updateNum(newNumber){
-    setNum(newNumber);
-  }
+  // function updateNum(newNumber){
+  //   setNum(newNumber);
+  // }
 
   return (
     // <View style={styles.container}>
