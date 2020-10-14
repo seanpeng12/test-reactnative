@@ -14,9 +14,10 @@ import { Alert, StyleSheet } from 'react-native';
 
 // 引入click
 import Click from './src/Click';
-// 引入
+// 引入productList
 import ProductList from './src/product/ProductList'
-
+// 引入test
+import Test from './src/product/Test'
 
 
 function HomeScreen() {
@@ -36,13 +37,17 @@ function HomeScreen() {
 function DetailsScreen() {
 
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>此為測試頁</Text>
-      {/* <Button
-        title="回到主頁面"
-        onPress={() => navigation.navigate('家')}
-      /> */}
+    // <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    //   <Text>此為測試頁</Text>
+    //   {/* <Button
+    //     title="回到主頁面"
+    //     onPress={() => navigation.navigate('家')}
+    //   /> */}
+    // </View>
+    <View style={styles.container}>
+      <Test/>
     </View>
+
   );
 }
 

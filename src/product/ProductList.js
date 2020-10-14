@@ -23,6 +23,25 @@ export default function ProductList(){
         {desc:"Floyd-warshall", price:32000}
     ]);
 
+    // 刪除資料確認用
+    function confirm(index,desc){
+        // Alert.alert("您點選了:"+index) 
+        Alert.alert(
+            '確認刪除',
+            '您確認要刪除"'+desc+'"嗎?',
+            [
+              {text: '不要', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+              {text: '刪除', onPress: () => deleteAddressDetail(index,desc)},
+            ],
+            { cancelable: false }
+          )   
+    }
+
+    function deleteAddressDetail(index,desc){
+        
+        setProducts(oldProduct => oldProduct.filter((value, i) => i !== index));
+    }
+
     // modal
     const [modalVisible, setModalVisible] = useState(false);
 
@@ -30,10 +49,18 @@ export default function ProductList(){
     const renderItem = ({ item, index }) => {
         const backgroundColor = index === selected ? "#f9c2ff" : "#00ffff";
         return(
-            <TouchableOpacity onPress = {()=>{Alert.alert("您點選了:"+item.desc),setSelected(index)}} style={[styles.item, {backgroundColor}]}>
-            <Text style={styles.title}>{item.desc}</Text>
-            <Text>{item.price}</Text>
-            <Text>/{index}</Text>
+            <TouchableOpacity 
+                onPress = {()=>{
+                    // 更新資料
+                    setSelected(index)
+                    // 刪除資料
+                    confirm(index,item.desc)
+                }} 
+                style={[styles.item, {backgroundColor}]}
+            >
+                <Text style={styles.title}>{item.desc}</Text>
+                <Text>{item.price}</Text>
+                <Text>/{index}</Text>
             </TouchableOpacity>
         );
     }
