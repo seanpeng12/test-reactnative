@@ -18,13 +18,15 @@ import Click from './src/Click';
 import ProductList from './src/product/ProductList'
 // 引入test
 import Test from './src/product/Test'
-
+// 
+import Home from './src/product/Home'
 
 function HomeScreen() {
 
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <View style={styles.container}>
       <Text>歡迎使用</Text>
+      <Home/>
       {/* <Button
         title="點此"
         onPress={() => navigation.navigate('詳細資訊')}
