@@ -23,7 +23,7 @@ export default function ProductAdd(props){
 
     return (
         <View>
-        <Modal  visible={props.modalVisible}>
+        <Modal visible={props.modalVisible}>
         <TextInput style={styles.index} placeholder="產品說明" value={desc} onChangeText={text=>setDesc(text)}/>
         <TextInput style={styles.index} placeholder="價格" value={price} onChangeText={text=>setPrice(text)}/>
         <Button onPress={update} title="確定"/>

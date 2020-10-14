@@ -44,6 +44,10 @@ export default StyleSheet.create({
 
     button:{
         fontSize: 20,
+    },
+
+    temp:{
+        marginTop: StatusBar.currentHeight || 0,
     }
 
   

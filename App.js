@@ -1,38 +1,39 @@
-import { StatusBar } from 'expo-status-bar';
-import React, {useState, useEffect } from 'react';
-import { Alert, StyleSheet, Text, View } from 'react-native';
-// 引入click
-import Click from './src/Click';
-// 引入
-import ProductList from './src/product/ProductList'
+import * as React from 'react';
+import { View, Text } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-export default function App() {
-  // 使用state
-  // const [num, setNum] = useState(10);
-
-  // props單獨傳值給clickjs是無法用useEffect監控(並非共用變數不會更新)，需要傳送function props
-  // function updateNum(newNumber){
-  //   setNum(newNumber);
-  // }
+// 第一個頁面
+function HomeScreen() {
 
   return (
-    // <View style={styles.container}>
-    //   <Text>歡迎使用~</Text>
-    //    <Click number={num} update={updateNum}/>
-    //   <StatusBar style="auto" />
-    // </View>
-    <View style={styles.container}>
-      <ProductList/>
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Home Screen</Text>
+    </View>
+  );
+
+}
+
+// 第二個頁面
+function DetailsScreen() {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Details Screen</Text>
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop:50,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const Stack = createStackNavigator();
+
+function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Details" component={DetailsScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+
+export default App;
