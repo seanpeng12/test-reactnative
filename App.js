@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text,  } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { StatusBar } from 'expo-status-bar';
 import {useState, useEffect } from 'react';
@@ -16,6 +16,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 // drawer
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
+import { Image } from 'react-native'
+// react-native-elements
+import { Card, ListItem, Icon, Button } from 'react-native-elements'
 
 // 引入home
 import Home from './src/product/Home'
@@ -31,7 +34,7 @@ function HomeScreen() {
 
   return (
     <View style={styles.container}>
-      <Text>歡迎使用</Text>
+      <Text>====================</Text>
       <Home/>
       {/* <Button
         title="點此"
@@ -85,15 +88,42 @@ function Clicktest({route}){
 }
 // stack頁面:home,details
 function home({navigation}){
+  const users = [
+  {
+    name: 'brynn',
+    avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg'
+  },]
   return (
-    <View style={{ flex: 1, justifyContent: 'center',  alignItems: 'center' }}>
-      <Text>
-        點按進入
-      </Text>
-      <Button 
+    <View style={{ flex: 1, flexDirection: 'column', justifyContent: 'center', alignItems: 'center', }}>
+
+      <Card>
+        <Card.Title>按下進入</Card.Title>
+        <Card.Divider/>
+        {
+          users.map((u, i) => {
+            return (
+              <View key={i}>
+                <Image
+                  resizeMode="cover"
+                  source={{ uri: u.avatar }}
+                />
+                <View style={{paddingHorizontal:100}}>
+                  <Button
+                    onPress={() => navigation.navigate("主畫面")}
+                    title="開始使用"
+                    type="clear"
+                  />
+                </View>
+              </View>
+            );
+          })
+        }
+      </Card>
+      
+      {/* <Button 
         onPress={() => navigation.navigate("主畫面")}
         title="開始使用"
-      />
+      /> */}
     </View>
   );
 }
