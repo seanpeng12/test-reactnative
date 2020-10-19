@@ -32,7 +32,7 @@ export default StyleSheet.create({
     title: {
         flex: 4,
         fontSize: 24,
-        fontFamily:'Georgia',
+        // fontFamily:'Georgia',
         fontWeight:('bold', '600'),
         textAlign:'left',
     },
