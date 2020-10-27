@@ -5,25 +5,6 @@ import { StatusBar } from "expo-status-bar";
 import { useState, useEffect } from "react";
 import { Alert, StyleSheet } from "react-native";
 
-// Using the operating system preferences(iOS13 up)
-import { AppearanceProvider, useColorScheme } from "react-native-appearance";
-// NavigationContainer, theme
-import {
-  NavigationContainer,
-  DefaultTheme,
-  DarkTheme,
-} from "@react-navigation/native";
-// Stack
-import { createStackNavigator } from "@react-navigation/stack";
-// Tab
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-// drawer
-import { createDrawerNavigator } from "@react-navigation/drawer";
-
-import { Image } from "react-native";
-// react-native-elements
-import { Card, ListItem, Icon, Button } from "react-native-elements";
-
 // 引入home
 import Home from "./src/product/listdemo";
 // 引入test
@@ -72,62 +53,30 @@ function Clicktest({ route }) {
   );
 }
 
-// stack頁面:home
-function home({ navigation }) {
-  const users = [
-    {
-      name: "brynn",
-      avatar: "https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg",
-    },
-  ];
-  return (
-    <View
-      style={{
-        flex: 1,
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Card>
-        <Card.Title>按下進入</Card.Title>
-        <Card.Divider />
-        {users.map((u, i) => {
-          return (
-            <View key={i}>
-              <Image resizeMode="cover" source={{ uri: u.avatar }} />
-              <View style={{ paddingHorizontal: 100 }}>
-                <Button
-                  onPress={() => navigation.navigate("主畫面")}
-                  title="開始使用"
-                  type="clear"
-                />
-              </View>
-            </View>
-          );
-        })}
-      </Card>
-    </View>
-  );
-}
+// Using the operating system preferences(iOS13 up)
+import { AppearanceProvider, useColorScheme } from "react-native-appearance";
+// NavigationContainer, theme
+import {
+  NavigationContainer,
+  DefaultTheme,
+  DarkTheme,
+} from "@react-navigation/native";
+// Stack
+import { createStackNavigator } from "@react-navigation/stack";
+// Tab
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+// drawer
+import { createDrawerNavigator } from "@react-navigation/drawer";
+
+import { Image } from "react-native";
+// react-native-elements
+import { Card, ListItem, Icon, Button } from "react-native-elements";
 
 // 引入
 const Tab = createBottomTabNavigator();
-const Stack = createStackNavigator();
-const Drawer = createDrawerNavigator();
-
-// stack
-function AppStack() {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen name="謎燈遊戲" component={home} />
-      <Stack.Screen name="主畫面" component={AppTab} />
-    </Stack.Navigator>
-  );
-}
 
 // 四個頁面之Tab
-function AppTab() {
+export default function AppTab() {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -164,27 +113,3 @@ function AppTab() {
     </Tab.Navigator>
   );
 }
-
-function App() {
-  const scheme = useColorScheme();
-  return (
-    <NavigationContainer theme={scheme === "dark" ? DarkTheme : DefaultTheme}>
-      <Drawer.Navigator initialRouteName="home">
-        <Drawer.Screen name="home" component={AppStack} />
-        <Drawer.Screen name="其他功能" component={AppTab} />
-      </Drawer.Navigator>
-    </NavigationContainer>
-  );
-}
-
-export default App;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: 50,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
