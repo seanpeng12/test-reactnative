@@ -27,7 +27,7 @@ import { Card, ListItem, Icon, Button } from "react-native-elements";
 // 引入home
 import Home from "./src/product/listdemo";
 // 引入test
-import Test from "./src/product/Test";
+import Test from "./src/person/personList";
 // 引入productList
 import ProductList from "./src/product/ProductList";
 // 引入click
