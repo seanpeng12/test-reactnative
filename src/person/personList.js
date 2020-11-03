@@ -1,53 +1,83 @@
-import React, {useState, useEffect} from 'react';
-import {FlatList, View, Text} from 'react-native';
-import styles from '../styles';
+import React, { useState, useEffect } from "react";
+import { FlatList, View, Text, TouchableOpacity } from "react-native";
+import { Icon, Fab } from "native-base";
+import styles from "../styles";
 import { Alert, Button } from "react-native";
-import axios from 'axios';
-// post
-import PersonAdd from './personAdd';
-import {axios_config, url} from './config';
+import axios from "axios";
+
+import PersonAdd from "./personAdd";
+import { axios_config, url } from "./config";
 
 export default function PersonList() {
-
   const renderItem = ({ item, index }) => (
-    <View style={styles.item}>
-      <Text>{index}   </Text>
-      <Text>{item.fields.Name} </Text>
-      <Text>{item.fields.City} </Text>
-      <Text>{item.fields.Age}歲</Text>
+    // <View style={styles.item}>
+    //   <Text>{index} </Text>
+    //   <Text>{item.fields.Name} </Text>
+    //   <Text>{item.fields.City} </Text>
+    //   <Text>{item.fields.Age}</Text>
+    //   <View style={{ flex: 1 }}>
+    //     <Fab onPress={() => setModalVisible(true)}>
+    //       <Icon ios="ios-add" android="md-add" />
+    //     </Fab>
+    //   </View>
+    // </View>
+    <View
+      style={{
+        flex: 1,
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "stretch",
+      }}
+    >
+      <View style={{ height: 60, backgroundColor: "powderblue" }}>
+        <View style={{ flex: 1, flexDirection: "row" }}>
+          <Text>{index} </Text>
+          <Text>{item.fields.Name} </Text>
+          <Text>{item.fields.City} </Text>
+          <Text>{item.fields.Age}</Text>
+        </View>
+        <View style={{ flex: 1, flexDirection: "row" }}>
+          <Fab onPress={() => setModalVisible(true)}>
+            <Icon ios="ios-add" android="md-add" />
+          </Fab>
+        </View>
+      </View>
     </View>
   );
+
   const [persons, setPersons] = useState([]);
-  //post用 
   const [modalVisible, setModalVisible] = useState(false);
+  const [selectedId, setSelectedId] = useState(null);
 
-  async function fetchData () {
-      const result = await axios.get(url,axios_config);
-      //console.log(result);
-      setPersons(result.data.records);
+  async function fetchData() {
+    const result = await axios.get(url, axios_config);
+    console.log("Refresh........");
+    if (result.length != 0) {
+      console.log("Get data done");
+    }
+    // console.log(result);
+    setPersons(result.data.records);
   }
-
+  // 偵測modalViaible改變refresh data
   useEffect(() => {
     fetchData();
-  },[modalVisible]);
-  
-  //收到reload 
-  function update(){
+  }, [modalVisible]);
+
+  //收到props
+  function update() {
     setModalVisible(false);
   }
 
   return (
-    <View style={styles.container}>
-      <FlatList 
-        data={persons} 
-        renderItem = {renderItem}
-        keyExtractor={(item, index) => ""+index}
-      >
-      </FlatList>
+    <View style={{ width: 300, paddingTop: 50 }}>
+      <FlatList
+        data={persons}
+        renderItem={renderItem}
+        keyExtractor={(item, index) => "" + index}
+      ></FlatList>
       <Button title={"重新整理"} onPress={() => fetchData()} />
-      <Button title={"新增"} onPress={()=>setModalVisible(true)} />
-      <PersonAdd modalVisible = {modalVisible}  update={update}/>
+      <Button title={"新增"} onPress={() => setModalVisible(true)} />
+      <PersonAdd modalVisible={modalVisible} update={update} />
     </View>
- );
-
+  );
 }
