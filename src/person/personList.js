@@ -10,17 +10,6 @@ import { axios_config, url } from "./config";
 
 export default function PersonList() {
   const renderItem = ({ item, index }) => (
-    // <View style={styles.item}>
-    //   <Text>{index} </Text>
-    //   <Text>{item.fields.Name} </Text>
-    //   <Text>{item.fields.City} </Text>
-    //   <Text>{item.fields.Age}</Text>
-    //   <View style={{ flex: 1 }}>
-    //     <Fab onPress={() => setModalVisible(true)}>
-    //       <Icon ios="ios-add" android="md-add" />
-    //     </Fab>
-    //   </View>
-    // </View>
     <View
       style={{
         flex: 1,
@@ -29,7 +18,7 @@ export default function PersonList() {
         alignItems: "stretch",
       }}
     >
-      <View style={{ height: 60, backgroundColor: "powderblue" }}>
+      <View style={{ height: 50, backgroundColor: "powderblue" }}>
         <View style={{ flex: 1, flexDirection: "row" }}>
           <Text>{index} </Text>
           <Text>{item.fields.Name} </Text>
@@ -69,7 +58,7 @@ export default function PersonList() {
   }
 
   return (
-    <View style={{ width: 300, paddingTop: 50 }}>
+    <View style={{ width: 300 }}>
       <FlatList
         data={persons}
         renderItem={renderItem}

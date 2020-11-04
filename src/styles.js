@@ -22,7 +22,7 @@ export default StyleSheet.create({
   item: {
     flex: 0,
     flexDirection: "row",
-    backgroundColor: "#DDDDDD",
+    backgroundColor: "#00bfff",
     padding: 10,
     marginVertical: 8,
     marginHorizontal: 16,

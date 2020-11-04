@@ -33,6 +33,15 @@ import ProductList from "./src/product/ProductList";
 // 引入click
 import Click from "./src/Click";
 
+import FirebaseList from "./src/person/firebaseList";
+function FirebaseGet() {
+  return (
+    <View style={styles.container}>
+      <FirebaseList />
+    </View>
+  );
+}
+
 function HomeScreen() {
   return (
     <View style={styles.container}>
@@ -161,6 +170,7 @@ function AppTab() {
         component={Clicktest}
         initialParams={{ count: 10 }}
       />
+      {/* <Tab.Screen name="firebase" component={FirebaseGet} /> */}
     </Tab.Navigator>
   );
 }
@@ -172,6 +182,7 @@ function App() {
       <Drawer.Navigator initialRouteName="home">
         <Drawer.Screen name="home" component={AppStack} />
         <Drawer.Screen name="其他功能" component={AppTab} />
+        <Drawer.Screen name="Firebase" component={FirebaseGet} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
