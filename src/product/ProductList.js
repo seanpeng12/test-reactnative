@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { Alert } from 'react-native';
-import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar,TouchableOpacity } from 'react-native';
+import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar,TouchableOpacity, Button  } from 'react-native';
 
 import ProductAdd from './ProductAdd';
 import styles from '../styles';
@@ -68,7 +68,12 @@ export default function ProductList(){
     function updatedata(newProduct){
         // 加入到串列尾
         setProducts(oldProducts=>[...oldProducts, newProduct]);
-      }
+    }
+
+    // 打開modal用
+    function visable(){
+        setModalVisible(true);
+    }
 
     // export回傳
     return (
@@ -78,22 +83,23 @@ export default function ProductList(){
             renderItem = {renderItem}
             keyExtractor={item => item.desc}>
         </FlatList>
+        <Button  onPress={visable}  title="新增筆數"/>
         <ProductAdd 
-            style={styles.formContainer}    
+            style={styles.formContainer}  
+            // setProducts props 
             updateInAdd={updatedata}
+            // model參數值props
             modalVisible={modalVisible}
-            setModalVisible={setModalVisible}/>
+            setModalVisible={setModalVisible}
+            >
+        </ProductAdd>
+        
         </View>
       );
 };
 
 
-// const app = StyleSheet.create({
-//     c: {
-//       flex: 1,
-//       flexDirection: "column",
-//     },
-//   });
+
 
 
 

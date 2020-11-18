@@ -165,11 +165,11 @@ function AppTab() {
       <Tab.Screen name="家" component={HomeScreen} />
       <Tab.Screen name="詳細資訊" component={DetailsScreen} />
       <Tab.Screen name="新增商品" component={Product} />
-      <Tab.Screen
+      {/* <Tab.Screen
         name="Click測試"
         component={Clicktest}
         initialParams={{ count: 10 }}
-      />
+      /> */}
       {/* <Tab.Screen name="firebase" component={FirebaseGet} /> */}
     </Tab.Navigator>
   );

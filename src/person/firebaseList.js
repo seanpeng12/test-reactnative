@@ -8,19 +8,23 @@ import axios from "axios";
 
 import * as firebase from 'firebase';
 import firestore from 'firebase/firestore'
+import ProductAdd from '../product/ProductAdd';
 import {config} from './firebase_config';
 
 export default function firebaseList() {
     YellowBox.ignoreWarnings(['Setting a timer']);
     //LogBox.ignoreLogs();
-    const [fdata,setData] = useState([{desc:"123",price:"123"}]);
+    const [fdata,setData] = useState([{desc:"初始值",price:"初始值"}]);
     const [isLoading,setIsLoading] = useState(true);
     const renderItem = ({item,index}) => {
-        <View style={styles.item}>
+        return(
+            <View>
             <Text>{index}</Text>
-            <Text style={styles.title}>{item.desc}123</Text>
+            <Text>{item.desc}</Text>
             <Text>{item.price}</Text>
         </View>
+        )
+        
     }
     async function firebaseGet(){
         if (!firebase.apps.length) {
@@ -51,18 +55,35 @@ export default function firebaseList() {
     }
     useEffect(()=>{
         console.log("length:"+fdata.length);
-        //firebaseGet();
+        firebaseGet();
     }
     ,[isLoading]);
+
+
+
+    // modal
+    const [modalVisible, setModalVisible] = useState(false);
+
+    function updatedata(newProduct){
+        // 加入到串列尾
+        setData(oldProducts=>[...oldProducts, newProduct]);
+    }
+
   return (
-    
     <View style={styles.listContainer}>
-        <Text style = {styles.item}>哈囉</Text>
+        <Text>哈囉</Text>
         <FlatList 
             data={fdata} 
             renderItem = {renderItem}
             keyExtractor={(item, index) => ""+index}
         ></FlatList>
+        <ProductAdd 
+            style={styles.formContainer}  
+            // setProducts props 
+            updateInAdd={updatedata}
+            // model參數值props
+            modalVisible={modalVisible}
+            setModalVisible={setModalVisible}/>
     </View>
     
   );

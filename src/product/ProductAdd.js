@@ -56,7 +56,7 @@ export default function ProductAdd(props){
                 </View>
             </View>
         </Modal>
-        <Button onPress={visable} title="新增筆數"/>
+        {/* <Button onPress={visable} title="新增筆數"/> */}
         </View>
       );
 };
