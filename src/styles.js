@@ -48,4 +48,10 @@ export default StyleSheet.create({
   temp: {
     marginTop: StatusBar.currentHeight || 0,
   },
+
+  logo: {
+    width: 305,
+    height: 159,
+    marginBottom: 20,
+  },
 });

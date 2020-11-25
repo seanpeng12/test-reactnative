@@ -31,6 +31,7 @@ import ProductList from "./src/product/ProductList";
 
 import FirebaseList from "./src/person/firebaseList";
 
+import ImageUpload from "./src/storage/ImageUpload";
 // firbase取資料
 function FirebaseGet() {
   return (
@@ -52,6 +53,14 @@ function Product() {
   return (
     <View style={styles.container}>
       <ProductList />
+    </View>
+  );
+}
+
+function ImageUploadScreen() {
+  return (
+    <View style={styles.container}>
+      <ImageUpload />
     </View>
   );
 }
@@ -139,6 +148,8 @@ function AppTab() {
     >
       <Tab.Screen name="airtable" component={AirtableScreen} />
       <Tab.Screen name="本機新增商品" component={Product} />
+      <Tab.Screen name="上傳照片" component={ImageUploadScreen} />
+
       {/* <Tab.Screen
         name="Click測試"
         component={Clicktest}
