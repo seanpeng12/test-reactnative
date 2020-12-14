@@ -1,11 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  FlatList,
-  View,
-  Text,
-  TouchableOpacity,
-  YellowBox,
-} from "react-native";
+import { FlatList, View, Text, TouchableOpacity, LogBox } from "react-native";
 import { Icon, Fab } from "native-base";
 import styles from "../styles";
 import { Alert, Button } from "react-native";
@@ -17,8 +11,9 @@ import ProductAdd from "../product/ProductAdd";
 import { config } from "./firebase_config";
 
 export default function firebaseList() {
-  YellowBox.ignoreWarnings(["Setting a timer"]);
-  //LogBox.ignoreLogs();
+  LogBox.ignoreLogs(["Warning: ..."]); // Ignore log notification by message
+  LogBox.ignoreAllLogs(); //Ignore all log notifications
+
   const [fdata, setData] = useState([{ desc: "初始值", price: "初始值" }]);
   const [isLoading, setIsLoading] = useState(true);
 

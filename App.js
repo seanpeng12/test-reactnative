@@ -32,6 +32,11 @@ import ProductList from "./src/product/ProductList";
 import FirebaseList from "./src/person/firebaseList";
 
 import ImageUpload from "./src/storage/ImageUpload";
+
+import SignUp from "./src/account/SignUp";
+import SignIn from "./src/account/SignIn";
+import SignOut from "./src/account/SignOut";
+
 // firbase取資料
 function FirebaseGet() {
   return (
@@ -48,7 +53,7 @@ function AirtableScreen() {
     </View>
   );
 }
-// local新增刪除資料
+// 畚箕新增刪除資料
 function Product() {
   return (
     <View style={styles.container}>
@@ -56,7 +61,7 @@ function Product() {
     </View>
   );
 }
-
+// 照片上傳資料
 function ImageUploadScreen() {
   return (
     <View style={styles.container}>
@@ -119,7 +124,7 @@ function AppStack() {
   );
 }
 
-// Tab
+// Tabs
 function AppTab() {
   return (
     <Tab.Navigator
@@ -149,7 +154,9 @@ function AppTab() {
       <Tab.Screen name="airtable" component={AirtableScreen} />
       <Tab.Screen name="本機新增商品" component={Product} />
       <Tab.Screen name="上傳照片" component={ImageUploadScreen} />
-
+      <Tab.Screen name="註冊" component={SignUp} />
+      <Tab.Screen name="登入" component={SignIn} />
+      <Tab.Screen name="登出" component={SignOut} />
       {/* <Tab.Screen
         name="Click測試"
         component={Clicktest}
@@ -160,7 +167,7 @@ function AppTab() {
   );
 }
 
-// drawers
+// drawers(最外層)
 function App() {
   const scheme = useColorScheme();
   return (

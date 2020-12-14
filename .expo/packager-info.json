@@ -1,10 +1,10 @@
 {
-  "expoServerNgrokUrl": "https://rx-gxb.seanpeng12.test-reactnative.exp.direct",
-  "packagerNgrokUrl": "https://packager.rx-gxb.seanpeng12.test-reactnative.exp.direct",
-  "ngrokPid": 7028,
-  "expoServerPort": 19000,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null,
+  "expoServerPort": null,
   "devToolsPort": 19002,
-  "packagerPort": 19001,
-  "packagerPid": 12900,
+  "packagerPort": null,
+  "packagerPid": null,
   "webpackServerPort": null
 }

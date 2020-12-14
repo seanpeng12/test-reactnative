@@ -54,7 +54,7 @@ export default function PersonAdd(props) {
           <TextInput
             style={styles.index}
             placeholder="年齡"
-            value={age}
+            value={age.toString()}
             onChangeText={(text) => setAge(text)}
           />
           <Button onPress={update} title="新增" />
